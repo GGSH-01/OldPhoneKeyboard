@@ -36,29 +36,28 @@ class PhoneKeyboardConverter {
     public function convertToNumeric($text) {
         $phoneKeyboardKeys=array_flip($this->phoneKeyboardKeys);
         $letters = str_split(strtolower($text));
-		foreach ($letters as $letter)
-		{
-            if(array_key_exists($letter, $phoneKeyboardKeys)){
+	foreach ($letters as $letter)
+	{
+	    if(array_key_exists($letter, $phoneKeyboardKeys)){
 			$numbers[]=$phoneKeyboardKeys[$letter];
-            }else{
-                return 'error, check your string';
-            }
-		}
-		
-		return implode(',',$numbers);
+	    }else{
+		return 'error, check your string';
+	    }
+	}
+
+	return implode(',',$numbers);
     }
     public function convertToString($numbers) {
         $numbers=explode(',',$numbers);
-		foreach ($numbers as $number)
-		{
-			if(array_key_exists($number, $this->phoneKeyboardKeys)){
-                $text[]=$this->phoneKeyboardKeys[$number];
-            }else{
-                return 'error, check your string';
-            }
+	foreach ($numbers as $number)
+	{
+		if(array_key_exists($number, $this->phoneKeyboardKeys)){
+		$text[]=$this->phoneKeyboardKeys[$number];
+		}else{
+		return 'error, check your string';
 		}
-		
-		return implode('',$text);
+	}
+	return implode('',$text);
     }
 
 }
